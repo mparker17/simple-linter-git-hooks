@@ -11,19 +11,19 @@ function test_file {
   fi
 
   if which -s csslint ; then
-    echo "Running CSS syntax lint..."
+    echo "Running CSS style lint..."
 
     set -e
     csslint "$file"
     set +e
   else
-    echo "Can't run the CSS syntax linter because the csslint executable isn't in the PATH."
+    echo "Can't run the CSS style linter because the csslint executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "CSS syntax lint."
+    echo "CSS style lint."
     ;;
 
   * )

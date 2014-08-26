@@ -11,7 +11,7 @@ function test_file {
   fi
 
   if which -s eslint ; then
-    echo "Running JS syntax lint..."
+    echo "Running JS style lint..."
 
     # See http://eslint.org/docs/integrations/
     e=$(eslint "$file")
@@ -21,13 +21,13 @@ function test_file {
       exit 1
     fi
   else
-    echo "Can't run JS syntax linter because the eslint executable isn't in the PATH."
+    echo "Can't run JS style linter because the eslint executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "JS syntax lint."
+    echo "JS style lint."
     ;;
 
   * )

@@ -11,19 +11,19 @@ function test_file {
   fi
 
   if which -s scss-lint ; then
-    echo "Running SCSS syntax lint..."
+    echo "Running SCSS style lint..."
 
     set -e
     scss-lint "$file"
     set +e
   else
-    echo "Can't run the SCSS syntax linter because the scss-lint executable isn't in the PATH."
+    echo "Can't run the SCSS style linter because the scss-lint executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "SCSS syntax lint."
+    echo "SCSS style lint."
     ;;
 
   * )

@@ -11,19 +11,19 @@ function test_file {
   fi
 
   if which -s rubocop ; then
-    echo "Running Ruby syntax lint..."
+    echo "Running Ruby style lint..."
 
     set -e
     rubocop "$file"
     set +e
   else
-    echo "Can't run the Ruby syntax linter because the rubocop executable isn't in the PATH."
+    echo "Can't run the Ruby style linter because the rubocop executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "Ruby syntax lint."
+    echo "Ruby style lint."
     ;;
 
   * )

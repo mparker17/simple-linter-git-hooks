@@ -11,19 +11,19 @@ function test_file {
   fi
 
   if which -s shellcheck ; then
-    echo "Running Shell syntax lint..."
+    echo "Running Shell style lint..."
 
     set -e
     shellcheck "$file"
     set +e
   else
-    echo "Can't run Shell syntax linter because the shellcheck executable isn't in the PATH."
+    echo "Can't run Shell style linter because the shellcheck executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "Shell syntax lint."
+    echo "Shell style lint."
     ;;
 
   * )
