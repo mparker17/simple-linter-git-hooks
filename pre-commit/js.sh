@@ -13,13 +13,12 @@ function test_file {
   if which -s eslint ; then
     echo "Running JS style lint..."
 
-    # See http://eslint.org/docs/integrations/
-    e=$(eslint "$file")
-    echo "$e"
-    if [[ "$e" != *"0 problems"* ]]; then
-      echo "ERROR: Check eslint hints."
-      exit 1
-    fi
+    # Note there's an alternative that works with older versions of eslint at
+    # https://coderwall.com/p/zq8jlq/eslint-pre-commit-hook
+    # See also http://eslint.org/docs/integrations/
+    set -e
+    eslint --plugin drupal "$file"
+    set +e
   else
     echo "Can't run JS style linter because the eslint executable isn't in the PATH."
   fi
