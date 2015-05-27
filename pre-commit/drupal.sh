@@ -14,7 +14,7 @@ function test_file {
     echo "Running Drupal style lint..."
 
     set -e
-    phpcs --standard=/Users/mparker17/.drush/coder/coder_sniffer/Drupal -- "$file"
+    phpcs --standard=Drupal -- "$file"
     set +e
   else
     echo "Can't run Drupal style linter because the phpcs executable isn't on the PATH."
