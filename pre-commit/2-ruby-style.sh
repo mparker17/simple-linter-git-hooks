@@ -17,9 +17,9 @@ function test_file {
     # commit, e.g.: syntax linters).
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
-    set -e
-    rubocop "$file"
     set +e
+    rubocop "$file"
+    set -e
   else
     echo "Can't run the Ruby style linter because the rubocop executable isn't in the PATH."
   fi

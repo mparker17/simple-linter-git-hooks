@@ -17,12 +17,12 @@ function test_file {
     # commit, e.g.: syntax linters).
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
-    set -e
+    set +e
     # Note there's an alternative that works with older versions of eslint at
     # https://coderwall.com/p/zq8jlq/eslint-pre-commit-hook
     # See also http://eslint.org/docs/integrations/
     eslint --plugin drupal "$file"
-    set +e
+    set -e
   else
     echo "Can't run JS style linter because the eslint executable isn't in the PATH."
   fi
