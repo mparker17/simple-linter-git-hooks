@@ -13,10 +13,14 @@ function test_file {
   if which -s eslint ; then
     echo "Running JS style lint..."
 
+    # Set -e before and +e after for _required_ linters (i.e.: that will prevent
+    # commit, e.g.: syntax linters).
+    # Set +e before and -e after for _optional_ linters (i.e.: that will only
+    # output messages upon commit, e.g.: style linters).
+    set -e
     # Note there's an alternative that works with older versions of eslint at
     # https://coderwall.com/p/zq8jlq/eslint-pre-commit-hook
     # See also http://eslint.org/docs/integrations/
-    set -e
     eslint --plugin drupal "$file"
     set +e
   else

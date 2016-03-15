@@ -33,6 +33,10 @@ function test_file {
     fi
     head -n 1 "${file}" | grep 'bash' | grep '^#!/' > /dev/null
     if [ "$?" -eq 0 ] ; then
+        # Set -e before and +e after for _required_ linters (i.e.: that will
+        # prevent commit, e.g.: syntax linters).
+        # Set +e before and -e after for _optional_ linters (i.e.: that will
+        # only output messages upon commit, e.g.: style linters).
         set -e
         bash -n "${file}"
         set +e
