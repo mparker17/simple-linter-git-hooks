@@ -45,7 +45,7 @@ function test_file {
 
 case "${1}" in
     --about )
-        echo "Check bash shell scripts for syntax errors."
+        echo "Bash syntax lint."
         ;;
     * )
         for file in `git diff-index --cached --name-only HEAD` ; do
