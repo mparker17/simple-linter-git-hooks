@@ -21,7 +21,7 @@ function test_file {
     # Note there's an alternative that works with older versions of eslint at
     # https://coderwall.com/p/zq8jlq/eslint-pre-commit-hook
     # See also http://eslint.org/docs/integrations/
-    eslint --plugin drupal "$file"
+    eslint "$file"
     set -e
   else
     echo "Can't run JS style linter because the eslint executable isn't in the PATH."
