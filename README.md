@@ -44,6 +44,11 @@ the type of file(s) you want to lint:
 
             $ which node # returns a path if it is installed properly.
 
+    * If you want to syntax-lint JSON files, you will need to install
+        [jsonlint](https://github.com/PagerDuty/jsonlint#installation).
+
+            $ which jsonlint # returns a path if it is installed properly.
+
     * If you want to syntax-lint PHP files, you will need to
         [install PHP](http://php.net/manual/install.php).
 
