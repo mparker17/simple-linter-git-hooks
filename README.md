@@ -115,7 +115,7 @@ the type of file(s) you want to lint:
 1. Set up `icefox/git-hooks` in the repository you want to run these linters in:
 
         $ cd /path/to/repo
-        $ git hooks install
+        $ git hooks --install
 
 2. Create a folder for these hooks:
 
