@@ -11,7 +11,7 @@ function test_file {
   fi
 
   if which -s csslint ; then
-    echo "Running CSS style lint..."
+    echo "Running CSS style lint with csslint..."
 
     # Set -e before and +e after for _required_ linters (i.e.: that will prevent
     # commit, e.g.: syntax linters).
@@ -27,7 +27,7 @@ function test_file {
 
 case "${1}" in
   --about )
-    echo "CSS style lint."
+    echo "CSS style lint (with csslint)."
     ;;
 
   * )
