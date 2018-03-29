@@ -18,7 +18,7 @@ function test_file {
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
     set -e
-    jsonlint -c "$file"
+    jsonlint "$file"
     set +e
   else
     echo "Can't run JSON syntax linter because the jsonlint executable isn't in the PATH."
