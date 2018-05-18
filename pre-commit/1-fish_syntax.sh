@@ -11,7 +11,7 @@ function test_file {
   fi
 
   if which -s fish ; then
-    echo "Running PHP syntax lint..."
+    echo "Running fish syntax lint..."
 
     # Set -e before and +e after for _required_ linters (i.e.: that will prevent
     # commit, e.g.: syntax linters).
