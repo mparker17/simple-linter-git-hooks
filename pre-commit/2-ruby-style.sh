@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s rubocop ; then
+    if [ -x "$(command -v rubocop)" ] ; then
         echo "Running Ruby style lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

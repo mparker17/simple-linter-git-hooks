@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s php ; then
+    if [ -x "$(command -v php)" ] ; then
         echo "Running PHP syntax lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s node ; then
+    if [ -x "$(command -v node)" ] ; then
         echo "Running JSON syntax lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

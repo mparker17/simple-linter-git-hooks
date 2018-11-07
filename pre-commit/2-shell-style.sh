@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s shellcheck ; then
+    if [ -x "$(command -v shellcheck)" ] ; then
         echo "Running Shell style lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

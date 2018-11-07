@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s fish ; then
+    if [ -x "$(command -v fish)" ] ; then
         echo "Running fish syntax lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

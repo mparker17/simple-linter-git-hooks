@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s eslint ; then
+    if [ -x "$(command -v eslint)" ] ; then
         echo "Running JS style lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

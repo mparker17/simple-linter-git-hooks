@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s csslint ; then
+    if [ -x "$(command -v csslint)" ] ; then
         echo "Running CSS style lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

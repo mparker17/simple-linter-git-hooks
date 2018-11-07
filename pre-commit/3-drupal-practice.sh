@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s phpcs ; then
+    if [ -x "$(command -v phpcs)" ] ; then
         echo "Running Drupal Best-Practices style lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent

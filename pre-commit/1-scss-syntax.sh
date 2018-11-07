@@ -10,7 +10,7 @@ function test_file {
         return
     fi
 
-    if which -s scss ; then
+    if [ -x "$(command -v scss)" ] ; then
         echo "Running SCSS syntax lint..."
 
         # Set -e before and +e after for _required_ linters (i.e.: that will prevent
