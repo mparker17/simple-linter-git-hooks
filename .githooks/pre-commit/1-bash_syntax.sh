@@ -1,0 +1,1 @@
+../../pre-commit/1-bash_syntax.sh

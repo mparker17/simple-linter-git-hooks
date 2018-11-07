@@ -109,6 +109,7 @@ the type of file(s) you want to lint:
 
         $ cd $HOME/Documents/Reference # or wherever you want
         $ git clone --recursive https://github.com/mparker17/simple-linter-git-hooks.git
+        $ git hooks --install
 
 # Use
 
