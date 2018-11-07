@@ -32,36 +32,36 @@
 GREP_OPTIONS=""
 
 function test_file {
-  file="${1}"
+    file="${1}"
 
-  if [ ! -f "${file}" ] ; then
-    return
-  fi
+    if [ ! -f "${file}" ] ; then
+        return
+    fi
 
-  echo "Running whitespace lint..."
-  # Set -e before and +e after for _required_ linters (i.e.: that will prevent
-  # commit, e.g.: syntax linters).
-  # Set +e before and -e after for _optional_ linters (i.e.: that will only
-  # output messages upon commit, e.g.: style linters).
-  set +e
-  if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
-      head="HEAD"
-  else
-      # First commit, use an empty tree
-      head="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
-  fi
-  git diff-index --check --cached "${head}" -- "$file"
-  set -e
+    echo "Running whitespace lint..."
+    # Set -e before and +e after for _required_ linters (i.e.: that will prevent
+    # commit, e.g.: syntax linters).
+    # Set +e before and -e after for _optional_ linters (i.e.: that will only
+    # output messages upon commit, e.g.: style linters).
+    set +e
+    if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
+        head="HEAD"
+    else
+        # First commit, use an empty tree
+        head="4b825dc642cb6eb9a060e54bf8d69288fbee4904"
+    fi
+    git diff-index --check --cached "${head}" -- "$file"
+    set -e
 }
 
 case "${1}" in
-  --about )
-    echo "Check for introduced trailing whitespace or an indent that uses a space before a tab."
+    --about )
+        echo "Check for introduced trailing whitespace or an indent that uses a space before a tab."
     ;;
 
-  * )
-    for file in $(git diff-index --cached --name-only HEAD | grep -v -E '\.(gif|gz|ico|jpeg|jpg|png|phar|exe|svgz|tff)') ; do
-      test_file "${file}"
-    done
+    * )
+        for file in $(git diff-index --cached --name-only HEAD | grep -v -E '\.(gif|gz|ico|jpeg|jpg|png|phar|exe|svgz|tff)') ; do
+            test_file "${file}"
+        done
     ;;
 esac
