@@ -10,28 +10,28 @@ function test_file {
     return
   fi
 
-  if which -s node ; then
-    echo "Running JSON syntax lint..."
+  if which -s csslint ; then
+    echo "Running CSS style lint with csslint..."
 
     # Set -e before and +e after for _required_ linters (i.e.: that will prevent
     # commit, e.g.: syntax linters).
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
-    set -e
-    jsonlint "$file"
     set +e
+    csslint "$file"
+    set -e
   else
-    echo "Can't run JSON syntax linter because the jsonlint executable isn't in the PATH."
+    echo "Can't run the CSS style linter because the csslint executable isn't in the PATH."
   fi
 }
 
 case "${1}" in
   --about )
-    echo "JSON syntax lint."
+    echo "CSS style lint (with csslint)."
     ;;
 
   * )
-    for file in $(git diff-index --cached --name-only HEAD | grep -E '\.(json)') ; do
+    for file in $(git diff-index --cached --name-only HEAD | grep -E '\.(css)') ; do
       test_file "${file}"
     done
     ;;

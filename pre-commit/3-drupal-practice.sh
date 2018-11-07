@@ -31,7 +31,7 @@ case "${1}" in
     ;;
 
   * )
-    for file in $(git diff-index --cached --name-only HEAD | grep -E '\.(php|inc|module|install|profile|test)') ; do
+    for file in $(git diff-index --cached --name-only HEAD | grep -E '\.(php|inc|module|theme|profile|install|test|yml)') ; do
       test_file "${file}"
     done
     ;;
