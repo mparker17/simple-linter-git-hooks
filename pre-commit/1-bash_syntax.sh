@@ -48,7 +48,7 @@ case "${1}" in
         echo "Bash syntax lint."
         ;;
     * )
-        for file in `git diff-index --cached --name-only HEAD` ; do
+        for file in $(git diff-index --cached --name-only HEAD) ; do
             test_file "${file}"
         done
         ;;
