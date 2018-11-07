@@ -13,7 +13,7 @@ function test_file {
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
     set +e
-    grep -i -E '\b(dpm|dvm|dpr|dvr|kpr|dargs|dd|ddebug_backtrace|db_queryd|firep|dfb|kint|krumo)\b' $file
+    grep -i -E '\b(dpm|dvm|dpr|dvr|kpr|dargs|dd|ddebug_backtrace|db_queryd|firep|dfb|kint|krumo)\b' "$file"
     set -e
 }
 
