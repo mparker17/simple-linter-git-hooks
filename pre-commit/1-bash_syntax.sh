@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+
+# Prerequisites:
+# - [GNU Bourne-again Shell](https://www.gnu.org/software/bash/)
+#   Check if it is installed by running:
+#
+#       bash
+#
+#   ... if that does not result in an "unknown command" (or similar) message,
+#   then this script should work fine. To return to your regular shell, type
+#   `exit` and press enter/return.
+
+# This is based upon another script which had the following license:
 #
 # Copyright (c) 2010-2014, Benjamin C. Meyer <ben@meyerhome.net>
 # All rights reserved.

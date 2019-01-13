@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [jsonlint](https://github.com/PagerDuty/jsonlint#installation)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v jsonlint'
+#
+#   ... if that returns a path, then this script should work fine.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
+
+# Prerequisites:
+# - [Git version control system](https://git-scm.com/)
+#   Check if it is installed by running:
 #
+#       bash -c 'command -v git'
+#
+#   ... if that returns a path, then this script should work fine.
+#   Presumably, if you are using git pre-commit hooks, it is safe to say that
+#   you probably have git installed.
+
 # This is based upon another script which had the following license:
 #
 # Copyright (c) 2010, Benjamin C. Meyer <ben@meyerhome.net>

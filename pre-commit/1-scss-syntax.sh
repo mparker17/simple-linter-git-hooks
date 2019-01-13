@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [Sass](https://github.com/sass/sass#using)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v scss'
+#
+#   ... if that returns a path, then this script should work fine.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

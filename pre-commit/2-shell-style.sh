@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [ShellCheck](https://github.com/koalaman/shellcheck#installing)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v shellcheck'
+#
+#   ... if that returns a path, then this script should work fine.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

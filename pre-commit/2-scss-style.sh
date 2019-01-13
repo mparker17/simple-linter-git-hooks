@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [SCSS-lint](https://github.com/brigade/scss-lint#installation)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v scss-lint'
+#
+#   ... if that returns a path, then this script should work fine.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

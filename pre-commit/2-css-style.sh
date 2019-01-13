@@ -3,6 +3,14 @@
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 
+# Prerequisites:
+# - [CSSLint](https://github.com/CSSLint/csslint/wiki/Command-line-interface)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v csslint'
+#
+#   ... if that returns a path, then this script should work fine.
+
 function test_file {
     file="${1}"
 

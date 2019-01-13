@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [GNU grep](https://www.gnu.org/software/grep/)
+#   The expression in this particular linter is simple enough that other grep
+#   variants should work too; but if you're finding that this linter does not
+#   work as you expect it to, try installing GNU grep and adjusting this script.
+#   Check if a variant of grep is installed by running:
+#
+#       bash -c 'command -v grep'
+#
+#   ... if that returns a path, then this script should work fine.
+
 function test_file {
     file="${1}"
 

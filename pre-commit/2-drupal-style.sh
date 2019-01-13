@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [PHPCodeSniffer and the Drupal Coder sniffs](https://www.drupal.org/node/1419988)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v phpcs'
+#
+#   ... if that returns a path, then PHPCodeSniffer is installed. Then, run:
+#
+#       phpcs -i
+#
+#   ... if that lists 'Drupal', then the Drupal coder sniffs are installed.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

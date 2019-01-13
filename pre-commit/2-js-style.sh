@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+# Prerequisites:
+# - [ESLint](http://eslint.org/docs/user-guide/getting-started#local-installation-and-usage)
+#   Check if it is installed by running:
+#
+#       bash -c 'command -v eslint'
+#
+#   ... if that returns a path, then this script should work fine.
+
 # shellcheck disable=SC2034
 GREP_OPTIONS=""
 

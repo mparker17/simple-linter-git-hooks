@@ -2,168 +2,202 @@
 
 A collection of simple linting templates to use with icefox/git-hooks.
 
+**This project is designed to be a template**. I suggest cloning this repository
+to your Documents folder, and only copying the parts of it that you want to use
+into your project.
+
 # Prerequisites
 
-## Required
+1. Download and install the
+    [GNU Bourne-again Shell](https://www.gnu.org/software/bash/) (bash), because
+    the scripts in the `pre-commit/` folder depend on it to run.
 
-1. Download and install the [Git version control system](https://git-scm.com/).
-    Exactly how you do this will depends on the type of computer you have, e.g.:
+    Exactly how you do this will depend on the type of computer you have, e.g.:
 
-        $ brew install git # MacOS with the Homebrew package manager.
-        $ sudo apt install git # Linux with the Advanced Package Tool package manager.
-        $ sudo yum install git # Linux with the Yellowdog Update Manager package manager.
+        $ brew install bash      # macOS with the Homebrew package manager
+        $ sudo apt install bash  # Debian or Ubuntu linux
 
-2. Download [icefox/git-hooks](https://github.com/icefox/git-hooks) and add
-    it's `git-hooks` script to your shell's `$PATH`, e.g.:
+    You are welcome to use another shell (I personally use
+    [fish](https://fishshell.com/), but bash still needs to be installed for
+    this project's scripts to work).
 
+2. Download and install the [Git version control system](https://git-scm.com/).
+    Exactly how you do this will depend on the type of computer you have, e.g.:
+
+        $ brew install git      # macOS with the Homebrew package manager
+        $ sudo apt install git  # Debian or Ubuntu linux
+
+3. Download [icefox/git-hooks](https://github.com/icefox/git-hooks):
+
+        $ cd $HOME/Documents/Tools  # or wherever you want
         $ git clone --recursive https://github.com/icefox/git-hooks.git
-        $ # If you use the Bourne-again Shell (bash):
-        $ echo "export PATH=\$PATH:$PWD/git-hooks" | tee -a $HOME/.bashrc
-        $ # If you use the Friendly Interactive Shell (fish):
-        $ echo "set PATH \$PATH $PWD/git-hooks" | tee -a $HOME/.config/fish/config.fish
 
-## Optional
+4. Add icefox/git-hooks to your shell's `$PATH` variable.
 
-Many of the `pre-commit` hooks call other programs to perform linting on files
-you're about to commit. You'll need to install the appropriate program(s) for
-the type of file(s) you want to lint:
+    Exactly how you do this will depend on the shell you use. Some common
+    examples are:
 
-* Syntax linters:
-    * If you want to syntax-lint Bourne-again Shell scripts, you will need to
-        install [GNU Bash](https://www.gnu.org/software/bash/).
+        $ cd $HOME/Documents/Tools/git-hooks # or wherever you cloned icefox/git-hooks in the last step
+        $ echo "export PATH=\$PATH:$PWD/git-hooks" | tee -a $HOME/.bashrc  # If you use bash
+        $ echo "export PATH=\$PATH:$PWD/git-hooks" | tee -a $HOME/.zshrc   # If you use zsh
+        $ echo "set PATH \$PATH $PWD/git-hooks" | tee -a $HOME/.config/fish/config.fish  # If you use fish
 
-            $ which bash # returns a path if it is installed properly.
-
-    * If you want to syntax-lint Friendly Interactive Shell scripts, you will
-        need to install the [fish shell](http://fishshell.com/).
-
-            $ which fish # returns a path if it is installed properly.
-
-    * If you want to syntax-lint JavaScript files, you will need to install
-        [Node.js](https://nodejs.org/).
-
-            $ which node # returns a path if it is installed properly.
-
-    * If you want to syntax-lint JSON files, you will need to install
-        [jsonlint](https://github.com/PagerDuty/jsonlint#installation).
-
-            $ which jsonlint # returns a path if it is installed properly.
-
-    * If you want to syntax-lint PHP files, you will need to
-        [install PHP](http://php.net/manual/install.php).
-
-            $ which php # returns a path if it is installed properly.
-
-    * If you want to syntax-lint SCSS files, you will need to install
-        [Sass](https://github.com/sass/sass#using).
-
-            $ which scss # returns a path if it is installed properly.
-
-* Style linters:
-    * If you want to style-lint CSS files, you will need to
-        [install CSSLint](https://github.com/CSSLint/csslint/wiki/Command-line-interface).
-
-            $ which csslint # returns a path if it is installed properly.
-
-    * If you want to style-lint PHP files, you will need to
-        [install PHPCodeSniffer and the Drupal Coder sniffs](https://www.drupal.org/node/1419988).
-
-            $ which phpcs # returns a path if PHPCodeSniffer is installed properly.
-            $ phpcs -i # lists Drupal if the Drupal Coder Sniffs are installed properly.
-
-    * If you want to style-lint JS files, you will need to
-        [install ESLint](http://eslint.org/docs/user-guide/getting-started#local-installation-and-usage).
-
-            $ which eslint # returns a path if it is installed properly.
-
-    * If you want to style-lint Puppet files, you will need to
-        [install puppet-lint](https://github.com/rodjek/puppet-lint#installation).
-
-            $ which puppet-lint # returns a path if it is installed properly.
-
-    * If you want to style-lint Ruby files, you will need to
-        [install Rubocop](https://github.com/bbatsov/rubocop#installation).
-
-            $ which rubocop # returns a path if it is installed properly.
-
-    * If you want to style-lint SCSS files, you will need to
-        [install SCSS-lint](https://github.com/brigade/scss-lint#installation).
-
-            $ which scss-lint # returns a path if it is installed properly.
-
-    * If you want to style-lint Bourne-again Shell scripts, you will need to
-        [install ShellCheck](https://github.com/koalaman/shellcheck#installing).
-
-            $ which shellcheck # returns a path if it is installed properly.
-
-* Best-practice linters:
-    * If you want to best-practice-lint PHP files, you will need to
-        [install PHPCodeSniffer and the Drupal Coder sniffs](https://www.drupal.org/node/1419988).
-
-            $ which phpcs # returns a path if PHPCodeSniffer is installed properly.
-            $ phpcs -i # lists DrupalPractice if the Drupal Coder Sniffs are installed properly.
+Many of the `pre-commit` hooks are simple wrappers that call other programs; and
+the other programs do the "real" work of linting. Please refer to the comment at
+the top of each script in the `pre-commit` folder for more information about
+what it requires in order to work.
 
 # Install
 
-1. Download this repository:
+1. Clone this repository
 
-        $ cd $HOME/Documents/Reference # or wherever you want
+        $ cd $HOME/Documents/Templates  # or wherever you want
         $ git clone --recursive https://github.com/mparker17/simple-linter-git-hooks.git
-        $ git hooks --install
 
 # Use
 
-1. Set up `icefox/git-hooks` in the repository you want to run these linters in:
+1. Set up `icefox/git-hooks` to run in the repository that you want to lint:
 
-        $ cd /path/to/repo
+        $ cd /path/to/your/project/repo
         $ git hooks --install
 
-2. Create a folder for these hooks:
+    Git detects the script named `git-hooks` in your `$PATH` (i.e.: at
+    `$HOME/Documents/Tools/git-hooks/git-hooks`), and makes it available as a
+    `git` sub-command automatically.
 
-        $ cd /path/to/repo
-        $ mkdir git_hooks
-        $ # or, `mkdir .githooks` if you'd prefer
-        $ cp -r $HOME/Documents/Reference/simple-linter-git-hooks/pre-commit git_hooks/
-        $ # or, `cp -r $HOME/Documents/Reference/simple-linter-git-hooks/pre-commit .githooks/` if you did that in the previous step
-        $ git hooks # will list all the hooks if you did that correctly
+    When you cloned or initialized your project, git automatically put a bunch
+    of hook template scripts in `.git/hooks/` - icefox/git-hooks replaces them
+    with its own scripts. These scripts scan a certain set of folders, and runs
+    all the scripts inside those folders instead. You'll set up these folders in
+    the next step.
 
-    **This project is designed to be a template you can customize**, so once you
-    have installed these linter templates, feel free to:
+2. Create a folder for these hooks. `icefox/git-hooks` allows you to use either
+    a folder named `git_hooks`, or a folder named `.githooks`
 
-    * delete any linters that you do not want to use,
-    * customize any linters according to your / your team's preferences, and/or,
-    * commit the linters to your repo for everyone on your team to use.
-        * If the rest of your team is not comfortable with running linters in
-            their pre-commit hooks, and/or committing them to the repository,
-            `echo "/git_hooks" | tee -a .git/info/exclude` will tell Git to
-            ignore them. If you want to stop ignoring them, you'll have to open
-            the `.git/info/exclude` file and delete the `/git_hooks` line.
+        $ cd /path/to/your/project/repo
+        $ mkdir -p .githooks/pre-commit
+        $ # or
+        $ mkdir -p git_hooks/pre-commit
 
-3. Work normally, and commit your work using the command-line.
+    It doesn't matter what name you choose; but you'll have to remember which
+    you chose later. I personally prefer `.githooks`.
 
-    The linter scripts that begin with `1-` will abort the commit if the linter
-    returns an "unsuccessful" error code to bash (i.e.: non-zero). These linters
-    are syntax-linters, meaning trying to compile or run the code in those files
-    will certainly result in a fatal error. This behavior is based upon the
-    assumption that you would never want to intentionally commit things that did
-    that!
+3. Optional: If you are working on a team, and your team is not yet ready to
+    commit these hooks to the repository, you can tell Git to temporarily ignore
+    them, so that you can still use them:
 
-    All other linter scripts will allow the commit to happen, but will display
-    their output, giving you the option of fixing the code and either amending
-    the last commit, or creating a new commit with the fixes depending on your /
-    your team's preference.
+        $ cd /path/to/your/project/repo
+        $ echo "/.githooks" | tee -a .git/info/exclude
+        $ # or
+        $ echo "/git_hooks" | tee -a .git/info/exclude
 
-# Notes
+4. Copy the hooks that you want to use from this repository into your project.
+    Make sure that you copy them to the `pre-commit` folder inside the
+    `git_hooks` or `.githooks` folder, otherwise git won't know when to run
+    them!
 
-**If you use a third-party GUI** (e.g.: Github Desktop, Atom, Sourcetree, Tower,
-etc.) **your mileage may vary**. You will need to check your GUI's documentation
-to determine:
+    If you're not sure where to start, you can copy everything:
 
-1. Does it actually run pre-commit hooks upon commit?
-2. Will it allow pre-commit hooks to abort a commit?
-3. Does the GUI have a way to display the messages that the pre-commit hooks
-    spit out, *even if the commit does not fail*?
+        $ /path/to/your/project/repo
+        $ cp $HOME/Documents/Templates/simple-linter-git-hooks/pre-commit/* .githooks/pre-commit/
+        $ # or
+        $ cp $HOME/Documents/Templates/simple-linter-git-hooks/pre-commit/* git_hooks/pre-commit/
 
-Because there are so many GUIs available, and because I currently prefer to use
-the command-line for most (but not all) operations, I have no current plans for
-this project to support git GUIs.
+5. Check that you installed the hooks properly:
+
+        $ git hooks
+
+    If you installed them properly, then it should list all the hooks you copied
+    over.
+
+6. Work normally, and commit your work using the command-line.
+
+    If you prefer to use git through your editor (e.g.: Atom's "Git" or "Github"
+    pane, IntelliJ's Version Control tab, Visual Studio Code's Source Control
+    pane), or a GUI (Github Desktop, Atom, Sourcetree, Tower, etc.), it may not
+    know how to run these linters. You will need to check your GUI's
+    documentation, or simply test to see if it works.
+
+# Questions and answers:
+
+1. Do you plan to support my editor or Git GUI?
+
+    No. There are so many GUIs available and they change so frequently that I
+    don't have time to follow all of their changes. Remember I maintain this
+    project on a volunteer basis. Also note that the only officially-supported
+    user interface for Git is the command-line.
+
+2. Why are the linter filenames prefixed with `1-`, `2-`, and `3-`?
+
+    It sets the order that they run in, and establishes a sort of priority.
+
+    Currently, all of the linters whose names start with `1-` check a file's
+    syntax; all of the linters whose names start with `2-` check a file's style,
+    and all of the linters whose names start with `3-` check if a file conforms
+    to best practices.
+
+    Since syntax errors will result in a compilation and/or runtime error, I
+    generally want to run those first, so I can fix them first, before I worry
+    about things like style and best practices.
+
+    Also some style linters tend to get really confused and spit out errors that
+    don't actually exist when there is a syntax error, so fixing syntax first is
+    usually more efficient. Likewise, some best-practices issues will go away
+    when you start conforming to the style that the style linter is checking.
+
+    Note that, as a general rule, the (syntax) linters prefixed with `1-` will
+    abort the commit if they detect a problem, and the other linters will not.
+    See the next question for more information about this behavior.
+
+3. Will this abort my commit if my whitespace is wrong or my style is bad?
+
+    The answer depends on your programming language, but as a general rule, no.
+
+    A syntax error will usually result in a fatal runtime or compilation error,
+    so I generally don't want to commit code with syntax errors. For this reason
+    all of the syntax linters (the ones prefixed with `1-`) will abort a commit.
+
+    The other (`2-` style, and `3-` best-practice) linters will write messages
+    to your console to notify you of problems, but will let the commit finish.
+    If you care about conforming to style and best practices, then you can fix
+    them and amend the commit or make a follow-up commit at your discretion.
+
+    That being said, in a language like Python, where whitespace determines the
+    structure of the program, you probably want to be a bit more strict with
+    whitespace errors and abort the commit. There are instructions in each
+    script for how to change that behavior.
+
+4. Can I make my own hooks?
+
+    Yes, feel free to use the ones in this repo as a template. There should be
+    enough documentation in each script for someone with basic shell-scripting
+    knowledge to make their own.
+
+    On systems that use POSIX permissions, you'll need to make the script
+    executable in order for it icefox/git-hooks to consider it valid
+    (`chmod u+x $script`).
+
+    I usually copy `pre-commit/1-unresolved-merge.sh` to
+    `$HOME/.git_hooks/pre-commit/1-mparker17.sh` and modify it grep for my name
+    so that I don't accidentally leave debugging code like "mparker17 was here".
+
+5. What if I want another type of hook, e.g.: `post-commit` or `post-receive`?
+
+    Create a `post-commit` or `post-receive` folder, and put your script in that
+    folder instead. See [icefox/git-hooks](https://github.com/icefox/git-hooks)
+    for more information.
+
+6. If git made me a bunch of script templates, why do I need icefox/git-hooks?
+
+    Essentially, icefox/git-hooks makes it way easier to use git's hook system.
+
+    Out-of-the-box, git only supports one single script file per event (e.g.:
+    one file to contain all of your pre-commit hooks, one file to contain all of
+    your post-receive hooks, etc.). This means you would have to try to jam all
+    of your linters into that one file. From a maintainability standpoint, this
+    is a nightmare.
+
+    Furthermore, you cannot commit git hooks at their default location inside
+    the `.git` folder, which is frustrating because a large script to run all
+    your linters is complex enough that version controlling that script would be
+    quite valuable! Icefox/git-hooks lets you commit your hooks (if you want).
