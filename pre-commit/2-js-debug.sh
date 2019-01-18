@@ -24,7 +24,7 @@ function test_file {
     # Set +e before and -e after for _optional_ linters (i.e.: that will only
     # output messages upon commit, e.g.: style linters).
     set +e
-    grep -i -E '\bconsole\.(assert|clear|count|countReset|debug|dir|dirxml|error|exception|group|groupCollapsed|groupEnd|info|log|profile|profileEnd|table|time|timeEnd|timeLogtimeStamp|trace|warn)\b' "$file"
+    { grep -i -E '\bconsole\.(assert|clear|count|countReset|debug|dir|dirxml|error|exception|group|groupCollapsed|groupEnd|info|log|profile|profileEnd|table|time|timeEnd|timeLogtimeStamp|trace|warn)\b' "$file" && test $? = 1; }
     set -e
 }
 
